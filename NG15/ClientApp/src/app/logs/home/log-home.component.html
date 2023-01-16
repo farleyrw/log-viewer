@@ -1,0 +1,27 @@
+
+<h1>Logs</h1>
+
+<!--<pre>{{ logs | json }}</pre>-->
+
+<app-log-filter></app-log-filter>
+
+<div class="container">
+  <div class="row alert alert-{{ getWrapperClass(log.severity) }}" *ngFor="let log of filterLogs()">
+    <div class="col">
+      <h3>
+        {{ log.app }}
+        <span class="align-top badge rounded-pill text-bg-{{ getWrapperClass(log.severity) }}">{{ log.severity | uppercase }}</span>
+      </h3>
+    </div>
+
+    <div class="col text-end font-weight-bold">{{ log.timestamp | date:'medium' }}</div>
+
+    <hr />
+
+    <p class="col-12 text-bg-light rounded">{{ log.message }}</p>
+  </div>
+
+  <div *ngIf="filterLogs().length == 0">
+    No logs available
+  </div>
+</div>

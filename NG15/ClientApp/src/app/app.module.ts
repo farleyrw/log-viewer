@@ -5,17 +5,17 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { LogHomeComponent } from './logs/log-home/log-home.component';
+import { LogHomeComponent } from './logs/home/log-home.component';
 import { AppRoutingModule } from './app-routing.module';
+import { LogFilterComponent } from './logs/filtering/log-filter.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    FetchDataComponent,
-    LogHomeComponent
+    LogHomeComponent,
+    LogFilterComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

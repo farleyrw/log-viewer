@@ -1,0 +1,46 @@
+
+<div class="fs-2 text-end">
+    <i class="bi bi-funnel" title="Filter options" role="button" [hidden]="filterOpen" (click)="filterOpen = !filterOpen"
+       data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Filter options"></i>
+    <i class="bi bi-funnel-fill" title="Close" role="button" [hidden]="!filterOpen" (click)="filterOpen = !filterOpen"
+       data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Filter options"></i>
+</div>
+
+<div [hidden]="!filterOpen" class="mb-3">
+    <div class="card">
+        <div class="card-header">
+            Filter options
+        </div>
+        <div class="card-body row">
+            <div class="col">
+                <h5 class="card-title">
+                    Log Levels
+                    <i class="bi bi-check-square-fill mx-2" role="button" title="Select All" (click)="toggleLogLevels(true)"></i>
+                    <i class="bi bi-dash-square-fill" role="button" title="Select None" (click)="toggleLogLevels(false)"></i>
+                </h5>
+
+                <div *ngFor="let level of logLevels">
+                    <label>
+                        <input type="checkbox" checked [(ngModel)]="filterOptions.levels[level]" />
+                        {{ level | titlecase }}
+                    </label>
+                </div>
+            </div>
+            <div class="col">
+                <h5 class="card-title">
+                    Applications
+                    <i class="bi bi-check-square-fill mx-2" role="button" title="Select All" (click)="toggleApps(true)"></i>
+                    <i class="bi bi-dash-square-fill" role="button" title="Select None" (click)="toggleApps(false)"></i>
+                </h5>
+
+                <div *ngFor="let app of apps">
+                    <label>
+                        <input type="checkbox" checked [(ngModel)]="filterOptions.apps[app]" />
+                        {{ app }}
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
