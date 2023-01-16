@@ -1,5 +1,6 @@
+import { LogLevel } from "./log";
 
 export class LogFilterOptions {
-    levels: { [key: string]: boolean } = {};
+    levels: { [key in LogLevel]?: boolean } = {};
     apps: { [key: string]: boolean } = {};
 }
