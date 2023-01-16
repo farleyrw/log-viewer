@@ -17,11 +17,11 @@ export class LogFilterService {
         this.toggleApps(true);
     }
 
-    filterLogs(logs: Log[], filterOptions: LogFilterOptions): Log[] {
+    filterLogs(logs: Log[]): Log[] {
         if (logs && logs.length) {
             return logs
-                .filter(log => !!filterOptions.levels[log.severity])
-                .filter(log => !!filterOptions.apps[log.app])
+                .filter(log => !!this.filterOptions.levels[log.severity])
+                .filter(log => !!this.filterOptions.apps[log.app])
                 .sort((first: Log, second: Log) => new Date(second.timestamp).getTime() - new Date(first.timestamp).getTime());
         }
 

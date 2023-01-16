@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { LogFilterOptions } from '../../models/log-filter-options';
 import { LogFilterService } from '../log-filter.service';
 import { LogLogicService } from '../log-logic.service';
 
@@ -10,16 +9,16 @@ import { LogLogicService } from '../log-logic.service';
 })
 export class LogFilterComponent {
 
-    apps = this.logFilterService.apps;
-
     filterOpen = false;
-
-    filterOptions = this.logFilterService.filterOptions;
 
     constructor(
         private logLogicService: LogLogicService,
         private logFilterService: LogFilterService
     ) { }
+
+    apps = this.logFilterService.apps;
+
+    filterOptions = this.logFilterService.filterOptions;
 
     logLevels = this.logLogicService.logLevels
 

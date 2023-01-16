@@ -30,20 +30,22 @@ export class LogHomeComponent implements OnInit, OnDestroy {
         this.subscriptions.unsubscribe();
     }
 
-    getWrapperClass = this.logLogicService.getWrapperClass;
+    getAlertClass = this.logLogicService.getAlertClass;
 
-    filterLogs() {
-        return this.logFilterService.filterLogs(this.logs, this.logFilterService.filterOptions);
+    filterLogs(): Log[] {
+        return this.logFilterService.filterLogs(this.logs);
     }
 
     /*
      * TODO:
-     * Refactor UI
      * Health checks
      * Build out server layer
      * Add DB - generate test data
      * Filtering options
      * Filter using dynamic tags for apps
+     * Add error handling
+     * Add loading overlay
      * Make tooltips work - install popper
+     * Cypress tests
      */
 }

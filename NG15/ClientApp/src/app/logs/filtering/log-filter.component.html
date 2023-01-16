@@ -20,7 +20,7 @@
                 </h5>
 
                 <div *ngFor="let level of logLevels">
-                    <label>
+                    <label role="button">
                         <input type="checkbox" checked [(ngModel)]="filterOptions.levels[level]" />
                         {{ level | titlecase }}
                     </label>
@@ -34,7 +34,7 @@
                 </h5>
 
                 <div *ngFor="let app of apps">
-                    <label>
+                    <label role="button">
                         <input type="checkbox" checked [(ngModel)]="filterOptions.apps[app]" />
                         {{ app }}
                     </label>

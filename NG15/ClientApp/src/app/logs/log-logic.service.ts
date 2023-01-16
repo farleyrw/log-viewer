@@ -1,23 +1,22 @@
 import { Injectable } from '@angular/core';
+import { LogLevel } from '../models/log';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LogLogicService {
 
-    logLevels = ['info', 'debug', 'warn', 'error']; // TODO: move to type
+    logLevels = Object.values(LogLevel);
 
-    constructor() { }
-
-    getWrapperClass(level: string): string {
-        const classMap = {
+    getAlertClass(level: LogLevel): string {
+        const classMap: { [key in LogLevel]: string } = {
             info: 'primary',
             debug: 'info',
             warn: 'warning',
             error: 'danger'
         };
 
-        return (classMap as any)[level];
+        return classMap[level];
     }
 
 }
