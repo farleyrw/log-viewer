@@ -38,7 +38,7 @@ export class LogHomeComponent implements OnInit, OnDestroy {
 
     /*
      * TODO:
-     * Health checks
+     * Server health checks
      * Build out server layer
      * Add DB - generate test data
      * Filtering options

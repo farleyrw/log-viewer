@@ -1,23 +1,29 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { of } from 'rxjs';
+import { LogService } from '../log.service';
 
 import { LogHomeComponent } from './log-home.component';
 
 describe('LogHomeComponent', () => {
-  let component: LogHomeComponent;
-  let fixture: ComponentFixture<LogHomeComponent>;
+    let component: LogHomeComponent;
+    let fixture: ComponentFixture<LogHomeComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ LogHomeComponent ]
-    })
-    .compileComponents();
+    let logServiceStub: Partial<LogService> = {
+        getLogs: () => of([])
+    };
 
-    fixture = TestBed.createComponent(LogHomeComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            declarations: [LogHomeComponent],
+            providers: [{ provide: LogService, useValue: logServiceStub }]
+        }).compileComponents();
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+        fixture = TestBed.createComponent(LogHomeComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
+
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });
