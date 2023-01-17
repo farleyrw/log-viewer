@@ -8,17 +8,22 @@ import { LogLogicService } from './log-logic.service';
 })
 export class LogFilterService {
 
+    private firstRun = true;
+
     filterOptions = new LogFilterOptions();
 
-    apps = ['Web', 'API']; // TODO: Generate list, must be observable
+    apps: string[] = [];
 
     constructor(private logLogicService: LogLogicService) {
         this.toggleLogLevels(true);
-        this.toggleApps(true);
     }
 
     filterLogs(logs: Log[]): Log[] {
         if (logs && logs.length) {
+            this.firstRun && this.detectApps(logs);
+
+            this.firstRun = false;
+
             return logs
                 .filter(log => !!this.filterOptions.levels[log.severity])
                 .filter(log => !!this.filterOptions.apps[log.app])
@@ -34,5 +39,23 @@ export class LogFilterService {
 
     toggleApps(enabled: boolean) {
         this.apps.forEach(app => this.filterOptions.apps[app] = enabled);
+    }
+
+    filterByApp(app: string) {
+        this.toggleApps(false);
+
+        this.filterOptions.apps[app] = true;
+    }
+
+    detectApps(logs: Log[]) {
+        if (logs && logs.length) {
+            logs.forEach(log => {
+                if (this.apps.indexOf(log.app) == -1) {
+                    this.apps.push(log.app);
+                }
+            });
+
+            this.toggleApps(true);
+        }
     }
 }

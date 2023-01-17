@@ -25,4 +25,12 @@ export class LogFilterComponent {
     toggleApps = this.logFilterService.toggleApps;
 
     toggleLogLevels = this.logFilterService.toggleLogLevels;
+
+    filterByApp = this.logFilterService.filterByApp;
+
+    getBadgeColor(index: number): string {
+        let colors = ["blue", "indigo", "purple", "pink", "red", "orange", "yellow", "green", "teal", "cyan"];
+
+        return colors[index];
+    }
 }

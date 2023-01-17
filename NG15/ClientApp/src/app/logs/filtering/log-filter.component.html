@@ -10,6 +10,9 @@
     <div class="card">
         <div class="card-header">
             Filter options
+            <span class="badge badge-{{ getBadgeColor(i) }} mx-2" role="button" *ngFor="let app of apps; index as i" (click)="filterByApp(app)">
+                {{ app }}
+            </span>
         </div>
         <div class="card-body row">
             <div class="col">
