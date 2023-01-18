@@ -20,7 +20,7 @@ export class LogFilterService {
 
     filterLogs(logs: Log[]): Log[] {
         if (logs && logs.length) {
-            this.firstRun && this.detectApps(logs);
+            this.firstRun && this.detectApps(logs); // TODO: find a better way to do this
 
             this.firstRun = false;
 

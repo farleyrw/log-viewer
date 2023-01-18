@@ -28,6 +28,8 @@ export class LogFilterComponent {
 
     filterByApp = this.logFilterService.filterByApp;
 
+    getAlertClass = this.logLogicService.getAlertClass;
+
     getBadgeColor(index: number): string {
         let colors = ["blue", "indigo", "purple", "pink", "red", "orange", "yellow", "green", "teal", "cyan"];
 

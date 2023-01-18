@@ -38,11 +38,11 @@ export class LogHomeComponent implements OnInit, OnDestroy {
 
     /*
      * TODO:
+     * Write unit tests
      * Server health checks
      * Build out server layer
      * Add DB - generate test data
      * Filtering options
-     * Filter using dynamic tags for apps
      * Add error handling
      * Add loading overlay
      * Make tooltips work - install popper

@@ -8,9 +8,13 @@ import { Log, LogLevel } from '../models/log';
 })
 export class LogService {
 
-    constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) { }
+    constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) { }
 
     getLogs(): Observable<Log[]> {
+        return this.http.get<Log[]>(this.baseUrl + 'api/logmessage');
+    }
+
+    testData() {
         let logs = [
             { id: 0, severity: LogLevel.Debug, timestamp: new Date('2022-12-25 18:04:23:000'), app: 'API', message: 'Debug Stuff' } as Log,
             { id: 1, severity: LogLevel.Info, timestamp: new Date('2023-01-02 08:04:23:000'), app: 'Web', message: 'Info Stuff' } as Log,

@@ -5,6 +5,7 @@ export class Log {
     timestamp!: Date;
     app!: string;
     message!: string;
+    server!: string;
 }
 
 export enum LogLevel {

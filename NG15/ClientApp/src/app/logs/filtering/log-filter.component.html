@@ -1,17 +1,18 @@
 
 <div class="fs-2 text-end">
-    <i class="bi bi-funnel" title="Filter options" role="button" [hidden]="filterOpen" (click)="filterOpen = !filterOpen"
+    <i class="bi bi-gear" title="Filter options" role="button" [hidden]="filterOpen" (click)="filterOpen = !filterOpen"
        data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Filter options"></i>
-    <i class="bi bi-funnel-fill" title="Close" role="button" [hidden]="!filterOpen" (click)="filterOpen = !filterOpen"
+    <i class="bi bi-gear-fill" title="Close" role="button" [hidden]="!filterOpen" (click)="filterOpen = !filterOpen"
        data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Filter options"></i>
 </div>
 
 <div [hidden]="!filterOpen" class="mb-3">
     <div class="card">
         <div class="card-header">
+            <i class="bi bi-filter"></i>
             Filter options
             <span class="badge badge-{{ getBadgeColor(i) }} mx-2" role="button" *ngFor="let app of apps; index as i" (click)="filterByApp(app)">
-                {{ app }}
+                {{ app | titlecase }}
             </span>
         </div>
         <div class="card-body row">
@@ -25,7 +26,7 @@
                 <div *ngFor="let level of logLevels">
                     <label role="button">
                         <input type="checkbox" checked [(ngModel)]="filterOptions.levels[level]" />
-                        {{ level | titlecase }}
+                        <span class="badge text-bg-{{ getAlertClass(level) }} mx-2">{{ level | titlecase }}</span>
                     </label>
                 </div>
             </div>
@@ -39,7 +40,7 @@
                 <div *ngFor="let app of apps">
                     <label role="button">
                         <input type="checkbox" checked [(ngModel)]="filterOptions.apps[app]" />
-                        {{ app }}
+                        {{ app | titlecase }}
                     </label>
                 </div>
             </div>
