@@ -20,7 +20,7 @@
                 <h5 class="card-title">
                     Log Levels
                     <i class="bi bi-check-square-fill mx-2" role="button" title="Select All" (click)="toggleLogLevels(true)"></i>
-                    <i class="bi bi-dash-square-fill" role="button" title="Select None" (click)="toggleLogLevels(false)"></i>
+                    <i class="bi bi-x-square-fill" role="button" title="Select None" (click)="toggleLogLevels(false)"></i>
                 </h5>
 
                 <div *ngFor="let level of logLevels">
@@ -34,7 +34,7 @@
                 <h5 class="card-title">
                     Applications
                     <i class="bi bi-check-square-fill mx-2" role="button" title="Select All" (click)="toggleApps(true)"></i>
-                    <i class="bi bi-dash-square-fill" role="button" title="Select None" (click)="toggleApps(false)"></i>
+                    <i class="bi bi-x-square-fill" role="button" title="Select None" (click)="toggleApps(false)"></i>
                 </h5>
 
                 <div *ngFor="let app of apps">

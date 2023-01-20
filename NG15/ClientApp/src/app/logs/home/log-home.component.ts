@@ -41,7 +41,8 @@ export class LogHomeComponent implements OnInit, OnDestroy {
      * Write unit tests
      * Server health checks
      * Build out server layer
-     * Add DB - generate test data
+     * Add DB backend
+     * Generate test data
      * Filtering options
      * Add error handling
      * Add loading overlay

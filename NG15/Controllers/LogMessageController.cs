@@ -33,15 +33,17 @@ namespace NG15.Controllers
         public IEnumerable<LogMessage> Get()
         {
             int total = 10;
-            return Enumerable.Range(1, total).Select(index => new LogMessage
-            {
-                Id = index,
-                App = Apps[Random.Shared.Next(Apps.Length)],
-                Timestamp = DateTime.Now.AddDays(-Random.Shared.Next(total)),
-                Severity = Levels[Random.Shared.Next(Levels.Length)],
-                Server = Servers[Random.Shared.Next(Servers.Length)],
-                Message = "I have some information for you"
-            });
+
+            return Enumerable.Range(1, total)
+                .Select(index => new LogMessage
+                {
+                    Id = index,
+                    App = Apps[Random.Shared.Next(Apps.Length)],
+                    Timestamp = DateTime.Now.AddDays(-Random.Shared.Next(total)),
+                    Severity = Levels[Random.Shared.Next(Levels.Length)],
+                    Server = Servers[Random.Shared.Next(Servers.Length)],
+                    Message = "I have some information for you"
+                });
         }
     }
 }

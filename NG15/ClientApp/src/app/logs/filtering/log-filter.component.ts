@@ -9,12 +9,20 @@ import { LogLogicService } from '../log-logic.service';
 })
 export class LogFilterComponent {
 
+    private colors = ["blue", "indigo", "purple", "pink", "red", "orange", "yellow", "green", "teal", "cyan"];
+    private shuffledColors: string[] = [];
+
     filterOpen = false;
 
     constructor(
         private logLogicService: LogLogicService,
         private logFilterService: LogFilterService
-    ) { }
+    ) {
+        this.shuffledColors = this.colors
+            .map(value => ({ value, sort: Math.random() }))
+            .sort((a, b) => a.sort - b.sort)
+            .map(({ value }) => value);
+    }
 
     apps = this.logFilterService.apps;
 
@@ -31,8 +39,6 @@ export class LogFilterComponent {
     getAlertClass = this.logLogicService.getAlertClass;
 
     getBadgeColor(index: number): string {
-        let colors = ["blue", "indigo", "purple", "pink", "red", "orange", "yellow", "green", "teal", "cyan"];
-
-        return colors[index];
+        return this.shuffledColors[index % this.shuffledColors.length];
     }
 }
