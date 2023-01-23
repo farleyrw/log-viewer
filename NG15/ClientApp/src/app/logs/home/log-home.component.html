@@ -6,7 +6,7 @@
 <app-log-filter></app-log-filter>
 
 <div class="container">
-    <div class="row alert alert-{{ getAlertClass(log.severity) }}" *ngFor="let log of filterLogs()">
+    <div class="row shadow alert alert-{{ getAlertClass(log.severity) }}" *ngFor="let log of filterLogs()">
         <div class="col">
             <h3>
                 {{ log.app | uppercase }}
