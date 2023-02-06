@@ -2,46 +2,29 @@
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
 
+.filter-section {
+    overflow: hidden;
+}
+
 .badge {
     color: white;
 }
 
-.badge-blue { 
-    background-color: $blue;
-}
+$colors: (
+    blue: $blue,
+    indigo: $indigo,
+    purple: $purple,
+    pink: $pink,
+    red: $red,
+    orange: $orange,
+    yellow: $yellow,
+    green: $green,
+    teal: $teal,
+    cyan: $cyan
+);
 
-.badge-indigo {
-    background-color: $indigo;
-}
-
-.badge-purple {
-    background-color: $purple;
-}
-
-.badge-pink {
-    background-color: $pink;
-}
-
-.badge-red {
-    background-color: $red;
-}
-
-.badge-orange {
-    background-color: $orange;
-}
-
-.badge-yellow {
-    background-color: $yellow;
-}
-
-.badge-green {
-    background-color: $green;
-}
-
-.badge-teal {
-    background-color: $teal;
-}
-
-.badge-cyan {
-    background-color: $cyan;
+@each $name, $color in $colors {
+    .badge-#{$name} {
+        background-color: $color;
+    }
 }
