@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Bogus;
+using Microsoft.AspNetCore.Mvc;
 using NG15.Models;
 
 namespace NG15.Controllers
@@ -34,16 +35,16 @@ namespace NG15.Controllers
         {
             int total = 10;
 
-            return Enumerable.Range(1, total)
-                .Select(index => new LogMessage
-                {
-                    Id = index,
-                    App = Apps[Random.Shared.Next(Apps.Length)],
-                    Timestamp = DateTime.Now.AddDays(-Random.Shared.Next(total)),
-                    Severity = Levels[Random.Shared.Next(Levels.Length)],
-                    Server = Servers[Random.Shared.Next(Servers.Length)],
-                    Message = "I have some information for you"
-                });
+            var testUsers = new Faker<LogMessage>()
+                .RuleFor(l => l.Id, f => f.UniqueIndex)
+                .RuleFor(l => l.App, f => f.PickRandom(Apps))
+                .RuleFor(l => l.Timestamp, f => f.Date.Past(1))
+                .RuleFor(l => l.Severity, f => f.PickRandom(Levels))
+                .RuleFor(l => l.Server, f => f.PickRandom(Servers))
+                .RuleFor(l => l.Message, f => f.System.Exception().ToString());
+
+
+            return testUsers.GenerateBetween(total, total*2);
         }
     }
 }
