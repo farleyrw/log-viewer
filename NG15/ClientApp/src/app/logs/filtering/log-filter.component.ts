@@ -1,4 +1,4 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import { animate, style, transition, trigger } from '@angular/animations';
 import { Component } from '@angular/core';
 import { LogFilterService } from '../log-filter.service';
 import { LogLogicService } from '../log-logic.service';
@@ -9,10 +9,13 @@ import { LogLogicService } from '../log-logic.service';
     styleUrls: ['./log-filter.component.scss'],
     animations: [
         trigger('slideInOut', [
-            state('slideIn', style({ transform: 'translateY(0)', 'max-height': '*', visibility: 'visible', opacity: 1 })),
-            state('slideOut', style({ transform: 'translateY(-100%)', 'max-height': '0', visibility: 'hidden', opacity: 0 })),
-            transition('slideIn => slideOut', animate('1s')),
-            transition('slideOut => slideIn', animate('1s'))
+            transition(':enter', [
+                style({ transform: 'translateY(-100%)' }),
+                animate('500ms ease-in', style({ transform: 'translateY(0%)' }))
+            ]),
+            transition(':leave', [
+                animate('500ms ease-in', style({ transform: 'translateY(-100%)' }))
+            ])
         ])
     ]
 })
